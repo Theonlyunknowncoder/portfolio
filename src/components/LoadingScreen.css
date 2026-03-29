@@ -1,0 +1,315 @@
+.loading-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: #05050a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* Grid background */
+.loading-grid {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(rgba(100, 100, 150, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(100, 100, 150, 0.06) 1px, transparent 1px);
+  background-size: 50px 50px;
+  animation: gridPulse 3s ease-in-out infinite;
+}
+
+@keyframes gridPulse {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+
+/* Particles */
+.loading-particles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.particle {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(0, 255, 200, 0.4);
+  animation: particleFloat linear infinite;
+}
+
+@keyframes particleFloat {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-120px) scale(0);
+    opacity: 0;
+  }
+}
+
+/* Center */
+.loading-center {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+/* Logo */
+.loading-logo {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 700;
+  color: #e0e0f0;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: logoFadeIn 0.8s ease 0.3s forwards;
+}
+
+@keyframes logoFadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.logo-reveal {
+  animation: logoPulse 0.6s ease forwards;
+}
+
+@keyframes logoPulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.08); }
+  100% { transform: scale(1); }
+}
+
+.loading-bracket {
+  color: #00ffc8;
+}
+
+.loading-name {
+  background: linear-gradient(135deg, #e0e0f0 0%, #00ffc8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Tagline */
+.loading-tagline {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  color: rgba(136, 136, 170, 0);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  animation: tagFadeIn 0.8s ease 0.6s forwards;
+}
+
+@keyframes tagFadeIn {
+  to {
+    color: rgba(136, 136, 170, 0.7);
+  }
+}
+
+.tagline-reveal {
+  animation: tagFlash 0.4s ease forwards !important;
+}
+
+@keyframes tagFlash {
+  0% { color: rgba(136, 136, 170, 0.7); }
+  50% { color: #00ffc8; }
+  100% { color: rgba(136, 136, 170, 0.7); }
+}
+
+/* Terminal log window */
+.loading-terminal {
+  width: 380px;
+  max-height: 180px;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #0a0a12;
+  border: 1px solid rgba(100, 100, 150, 0.15);
+  text-align: left;
+  opacity: 0;
+  animation: progressFadeIn 0.6s ease 0.8s forwards;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+.terminal-log-header {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 0.5rem 0.75rem;
+  background: #121220;
+  border-bottom: 1px solid rgba(100, 100, 150, 0.1);
+}
+
+.tlh-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.dot-r { background: #ff5f57; }
+.dot-y { background: #ffbd2e; }
+.dot-g { background: #28ca41; }
+
+.tlh-title {
+  margin-left: 0.4rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.6rem;
+  color: #5a5a7a;
+}
+
+.terminal-log-body {
+  padding: 0.75rem;
+  max-height: 130px;
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+
+.terminal-log-body::-webkit-scrollbar {
+  display: none;
+}
+
+.tl-line {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68rem;
+  color: #5a5a7a;
+  margin: 0;
+  padding: 0.15rem 0;
+  animation: lineSlideIn 0.3s ease;
+}
+
+.tl-line.tl-latest {
+  color: #00ffc8;
+}
+
+@keyframes lineSlideIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.tl-prompt {
+  color: #6c63ff;
+  margin-right: 0.4rem;
+}
+
+.tl-cursor {
+  color: #00ffc8;
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* Progress */
+.loading-progress-container {
+  width: 320px;
+  opacity: 0;
+  animation: progressFadeIn 0.6s ease 0.9s forwards;
+}
+
+@keyframes progressFadeIn {
+  to { opacity: 1; }
+}
+
+.loading-progress-track {
+  width: 100%;
+  height: 3px;
+  background: rgba(100, 100, 150, 0.15);
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 0.75rem;
+}
+
+.loading-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #00ffc8, #6c63ff);
+  border-radius: 4px;
+  transition: width 0.1s linear;
+  box-shadow: 0 0 12px rgba(0, 255, 200, 0.4);
+}
+
+.loading-progress-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.loading-status {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  color: #5a5a7a;
+  transition: color 0.3s ease;
+}
+
+.loading-percent {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  color: #00ffc8;
+}
+
+/* Exit curtains — hidden initially, shown only during exit */
+.loading-curtain-left,
+.loading-curtain-right {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 51%;
+  background: #05050a;
+  z-index: 1;
+  opacity: 0;
+  pointer-events: none;
+  transition: transform 0.8s cubic-bezier(0.77, 0, 0.175, 1), opacity 0.01s;
+}
+
+.loading-curtain-left {
+  left: 0;
+  transform-origin: left center;
+}
+
+.loading-curtain-right {
+  right: 0;
+  transform-origin: right center;
+}
+
+/* When exit starts, make curtains visible on top and slide out */
+.loading-exit .loading-curtain-left,
+.loading-exit .loading-curtain-right {
+  opacity: 1;
+  z-index: 10;
+  pointer-events: auto;
+}
+
+.loading-curtain-left.curtain-exit {
+  transform: translateX(-105%);
+}
+
+.loading-curtain-right.curtain-exit {
+  transform: translateX(105%);
+}
+
+/* Full exit */
+.loading-exit {
+  pointer-events: none;
+}
+
+.loading-exit .loading-center {
+  opacity: 0;
+  transform: scale(0.95);
+  transition: all 0.4s ease;
+}

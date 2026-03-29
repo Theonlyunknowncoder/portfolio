@@ -1,0 +1,321 @@
+.curtain-section {
+  position: relative;
+  min-height: 120vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+
+/* ===== Revealed World ===== */
+.curtain-revealed {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    #2a1530 0%,
+    #e8d5c4 20%,
+    #f5ebe0 40%,
+    var(--creator-bg) 70%,
+    var(--creator-bg) 100%
+  );
+  z-index: 0;
+}
+
+.revealed-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+  animation: orbPulse 8s ease-in-out infinite;
+}
+
+.orb-1 { width: 400px; height: 400px; top: 15%; left: 10%; background: rgba(255, 107, 53, 0.2); }
+.orb-2 { width: 300px; height: 300px; top: 35%; right: 10%; background: rgba(124, 58, 237, 0.15); animation-delay: 3s; }
+.orb-3 { width: 250px; height: 250px; bottom: 20%; left: 35%; background: rgba(255, 165, 0, 0.12); animation-delay: 5s; }
+
+@keyframes orbPulse {
+  0%, 100% { transform: scale(1); opacity: 0.7; }
+  50% { transform: scale(1.15); opacity: 1; }
+}
+
+/* Stage spotlight */
+.revealed-spotlight {
+  position: absolute;
+  top: -20%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 600px;
+  height: 800px;
+  background: radial-gradient(ellipse at top, rgba(255, 255, 255, 0.12) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* ===== Curtain Rod ===== */
+.curtain-rod {
+  position: absolute;
+  top: 0;
+  left: -2%;
+  right: -2%;
+  z-index: 45;
+  display: flex;
+  align-items: center;
+  height: 18px;
+}
+
+.rod-bar {
+  flex: 1;
+  height: 12px;
+  background: linear-gradient(
+    180deg,
+    #5a5a7e 0%,
+    #3a3a55 20%,
+    #252540 50%,
+    #3a3a55 80%,
+    #4a4a6e 100%
+  );
+  border-radius: 6px;
+  box-shadow:
+    0 3px 12px rgba(0, 0, 0, 0.7),
+    inset 0 2px 1px rgba(255, 255, 255, 0.1),
+    inset 0 -1px 1px rgba(0, 0, 0, 0.3);
+}
+
+.rod-finial {
+  width: 26px;
+  height: 26px;
+  background: radial-gradient(circle at 35% 35%, #6a6a8e, #2a2a3e);
+  border-radius: 50%;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+  flex-shrink: 0;
+}
+
+/* ===== Curtain Rings ===== */
+.curtain-rings {
+  position: absolute;
+  top: 0;
+  display: flex;
+  z-index: 42;
+  will-change: transform;
+}
+
+.rings-left { left: 2%; gap: 28px; }
+.rings-right { right: 2%; gap: 28px; }
+
+.ring-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.ring-hook {
+  width: 2px;
+  height: 6px;
+  background: #5a5a7e;
+}
+
+.ring {
+  width: 12px;
+  height: 12px;
+  border: 2px solid #5a5a7e;
+  border-radius: 50%;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3), inset 0 1px 1px rgba(255, 255, 255, 0.05);
+}
+
+/* ===== Curtain Panels ===== */
+.curtain-panel {
+  position: absolute;
+  top: 16px;
+  bottom: 0;
+  width: 53%;
+  z-index: 30;
+  will-change: transform;
+  transform-origin: top center;
+}
+
+.curtain-left { left: 0; }
+.curtain-right { right: 0; }
+
+/* Velvet base */
+.velvet {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  background: #0b0b16;
+  overflow: hidden;
+}
+
+/* 7 fabric drape folds */
+.drape {
+  flex: 1;
+  position: relative;
+}
+
+/* Left curtain drapes — alternating highlight/shadow */
+.curtain-left .d1 { background: linear-gradient(90deg, rgba(25,25,50,0.3) 0%, rgba(45,45,80,0.15) 40%, rgba(15,15,35,0.2) 100%); }
+.curtain-left .d2 { background: linear-gradient(90deg, rgba(15,15,35,0.15) 0%, rgba(55,55,95,0.2) 50%, rgba(20,20,45,0.15) 100%); }
+.curtain-left .d3 { background: linear-gradient(90deg, rgba(20,20,45,0.2) 0%, rgba(50,50,85,0.12) 35%, rgba(15,15,35,0.25) 100%); }
+.curtain-left .d4 { background: linear-gradient(90deg, rgba(15,15,35,0.1) 0%, rgba(60,60,100,0.22) 55%, rgba(25,25,50,0.1) 100%); }
+.curtain-left .d5 { background: linear-gradient(90deg, rgba(25,25,50,0.25) 0%, rgba(45,45,80,0.1) 40%, rgba(15,15,35,0.2) 100%); }
+.curtain-left .d6 { background: linear-gradient(90deg, rgba(15,15,35,0.15) 0%, rgba(55,55,90,0.18) 50%, rgba(20,20,45,0.12) 100%); }
+.curtain-left .d7 { background: linear-gradient(90deg, rgba(20,20,45,0.1) 0%, rgba(50,50,85,0.15) 60%, rgba(10,10,25,0.3) 100%); }
+
+/* Right curtain drapes — mirrored */
+.velvet-mirror .d1 { background: linear-gradient(90deg, rgba(10,10,25,0.3) 0%, rgba(50,50,85,0.15) 40%, rgba(20,20,45,0.1) 100%); }
+.velvet-mirror .d2 { background: linear-gradient(90deg, rgba(20,20,45,0.12) 0%, rgba(55,55,90,0.18) 50%, rgba(15,15,35,0.15) 100%); }
+.velvet-mirror .d3 { background: linear-gradient(90deg, rgba(15,15,35,0.2) 0%, rgba(45,45,80,0.1) 60%, rgba(25,25,50,0.25) 100%); }
+.velvet-mirror .d4 { background: linear-gradient(90deg, rgba(25,25,50,0.1) 0%, rgba(60,60,100,0.22) 45%, rgba(15,15,35,0.1) 100%); }
+.velvet-mirror .d5 { background: linear-gradient(90deg, rgba(15,15,35,0.25) 0%, rgba(50,50,85,0.12) 65%, rgba(20,20,45,0.2) 100%); }
+.velvet-mirror .d6 { background: linear-gradient(90deg, rgba(20,20,45,0.15) 0%, rgba(55,55,95,0.2) 50%, rgba(15,15,35,0.15) 100%); }
+.velvet-mirror .d7 { background: linear-gradient(90deg, rgba(15,15,35,0.2) 0%, rgba(45,45,80,0.15) 60%, rgba(25,25,50,0.3) 100%); }
+
+/* Thread texture overlay */
+.fabric-texture {
+  position: absolute;
+  inset: 0;
+  background:
+    repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(100, 100, 150, 0.015) 2px, rgba(100, 100, 150, 0.015) 3px),
+    repeating-linear-gradient(180deg, transparent, transparent 8px, rgba(100, 100, 150, 0.008) 8px, rgba(100, 100, 150, 0.008) 9px);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Bottom hem with weight */
+.curtain-hem {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100px;
+  background: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.15) 50%, rgba(0, 0, 0, 0.35) 100%);
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* Inner shadow for depth */
+.inner-shadow {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 60px;
+  z-index: 3;
+}
+
+.is-right {
+  right: 0;
+  background: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.6));
+}
+
+.is-left {
+  left: 0;
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.6), transparent);
+}
+
+/* Gathered edge bulge */
+.curtain-gather-edge {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: -8px;
+  width: 25px;
+  background: linear-gradient(90deg,
+    rgba(18, 18, 35, 0.9),
+    rgba(30, 30, 55, 1),
+    rgba(22, 22, 42, 0.95),
+    rgba(14, 14, 28, 0.8)
+  );
+  transform-origin: right center;
+  z-index: 4;
+  box-shadow: -4px 0 15px rgba(0, 0, 0, 0.5);
+  border-right: 1px solid rgba(80, 80, 120, 0.1);
+}
+
+.ge-left {
+  right: auto;
+  left: -8px;
+  transform-origin: left center;
+  background: linear-gradient(90deg,
+    rgba(14, 14, 28, 0.8),
+    rgba(22, 22, 42, 0.95),
+    rgba(30, 30, 55, 1),
+    rgba(18, 18, 35, 0.9)
+  );
+  box-shadow: 4px 0 15px rgba(0, 0, 0, 0.5);
+  border-left: 1px solid rgba(80, 80, 120, 0.1);
+}
+
+/* ===== Center Text ===== */
+.curtain-center {
+  position: relative;
+  z-index: 20;
+  text-align: center;
+  padding: 2rem;
+  will-change: opacity, transform;
+}
+
+.sparkle-row {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin: 0.5rem 0;
+}
+
+.sparkle {
+  font-size: 0.9rem;
+  background: var(--creator-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: sparkleAnim 2.5s ease-in-out infinite;
+}
+
+.sparkle.s2 {
+  animation-delay: 0.5s;
+  font-size: 1.1rem;
+}
+
+@keyframes sparkleAnim {
+  0%, 100% { opacity: 0.3; transform: scale(0.8) rotate(0deg); }
+  50% { opacity: 1; transform: scale(1.2) rotate(180deg); }
+}
+
+.curtain-title {
+  font-family: var(--font-heading-creative);
+  font-size: clamp(2.2rem, 5.5vw, 4.5rem);
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  margin: 0.25rem 0;
+  background: var(--creator-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 4px 15px rgba(255, 107, 53, 0.25));
+}
+
+.curtain-subtitle {
+  font-family: var(--font-heading-creative);
+  font-size: clamp(1rem, 2.2vw, 1.4rem);
+  font-weight: 300;
+  color: var(--creator-text-secondary);
+  font-style: italic;
+  margin: 0.25rem 0;
+}
+
+/* ===== Bottom Blend ===== */
+.curtain-bottom-blend {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 180px;
+  background: linear-gradient(to bottom, transparent, var(--creator-bg));
+  z-index: 5;
+  pointer-events: none;
+}
+
+@media (max-width: 768px) {
+  .curtain-section { min-height: 90vh; }
+  .curtain-rings { display: none; }
+  .curtain-center { padding: 1.5rem; }
+}

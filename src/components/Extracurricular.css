@@ -1,0 +1,113 @@
+.extra-section {
+  background: var(--coder-bg);
+  position: relative;
+}
+
+.extra-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+.extra-card {
+  background: var(--coder-bg-card);
+  border: 1px solid var(--coder-border);
+  border-radius: 16px;
+  padding: 2rem;
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.extra-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--coder-accent), var(--coder-accent-secondary));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.extra-card:hover {
+  border-color: var(--coder-border-hover);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 25px rgba(0, 255, 200, 0.08);
+}
+
+.extra-card:hover::before {
+  opacity: 1;
+}
+
+.extra-icon-wrap {
+  width: 52px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--coder-accent-glow);
+  border: 1px solid var(--coder-border);
+  border-radius: 12px;
+  margin-bottom: 1rem;
+  transition: all 0.3s ease;
+}
+
+.extra-card:hover .extra-icon-wrap {
+  transform: scale(1.08);
+  border-color: var(--coder-accent);
+  box-shadow: 0 0 12px var(--coder-accent-glow);
+}
+
+.extra-icon {
+  font-size: 1.5rem;
+}
+
+.extra-title {
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--coder-text);
+  margin-bottom: 0.6rem;
+  transition: color 0.3s ease;
+}
+
+.extra-card:hover .extra-title {
+  color: var(--coder-accent);
+}
+
+.extra-desc {
+  font-size: 0.88rem;
+  color: var(--coder-text-secondary);
+  line-height: 1.65;
+  margin-bottom: 1rem;
+}
+
+.extra-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.extra-tag {
+  font-family: var(--font-code);
+  font-size: 0.7rem;
+  padding: 0.25rem 0.65rem;
+  border-radius: 50px;
+  background: var(--coder-bg-secondary);
+  color: var(--coder-text-muted);
+  border: 1px solid var(--coder-border);
+  transition: all 0.3s ease;
+}
+
+.extra-card:hover .extra-tag {
+  border-color: var(--coder-border-hover);
+  color: var(--coder-text-secondary);
+}
+
+@media (max-width: 768px) {
+  .extra-grid {
+    grid-template-columns: 1fr;
+  }
+}

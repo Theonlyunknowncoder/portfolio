@@ -1,0 +1,130 @@
+.education-section {
+  background: var(--coder-bg);
+  position: relative;
+}
+
+.education-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.edu-card {
+  display: flex;
+  gap: 1.5rem;
+  background: var(--coder-bg-card);
+  border: 1px solid var(--coder-border);
+  border-radius: 16px;
+  padding: 2rem;
+  transition: all 0.4s ease;
+}
+
+.edu-card:hover {
+  border-color: var(--coder-border-hover);
+  transform: translateX(6px);
+  box-shadow: 0 8px 30px rgba(0, 255, 200, 0.06);
+}
+
+.edu-icon-wrap {
+  flex-shrink: 0;
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--coder-accent-glow);
+  border: 1px solid var(--coder-border);
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.edu-card:hover .edu-icon-wrap {
+  border-color: var(--coder-accent);
+  box-shadow: 0 0 15px var(--coder-accent-glow);
+}
+
+.edu-icon {
+  font-size: 1.5rem;
+}
+
+.edu-content {
+  flex: 1;
+}
+
+.edu-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 0.75rem;
+  gap: 1rem;
+}
+
+.edu-degree {
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--coder-text);
+  transition: color 0.3s ease;
+}
+
+.edu-card:hover .edu-degree {
+  color: var(--coder-accent);
+}
+
+.edu-institution {
+  font-size: 0.85rem;
+  color: var(--coder-text-secondary);
+  display: block;
+  margin-top: 0.15rem;
+}
+
+.edu-period {
+  font-family: var(--font-code);
+  font-size: 0.72rem;
+  color: var(--coder-accent);
+  background: var(--coder-accent-glow);
+  padding: 0.3rem 0.75rem;
+  border-radius: 50px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.edu-desc {
+  font-size: 0.92rem;
+  color: var(--coder-text-secondary);
+  line-height: 1.65;
+  margin-bottom: 1rem;
+}
+
+.edu-courses {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.edu-course {
+  font-family: var(--font-code);
+  font-size: 0.7rem;
+  padding: 0.25rem 0.65rem;
+  border-radius: 50px;
+  background: var(--coder-bg-secondary);
+  color: var(--coder-text-muted);
+  border: 1px solid var(--coder-border);
+  transition: all 0.3s ease;
+}
+
+.edu-card:hover .edu-course {
+  border-color: var(--coder-border-hover);
+  color: var(--coder-text-secondary);
+}
+
+@media (max-width: 768px) {
+  .edu-card {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .edu-header {
+    flex-direction: column;
+  }
+}
